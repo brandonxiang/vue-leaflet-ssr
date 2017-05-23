@@ -3,8 +3,9 @@ const merge = require('webpack-merge')
 const base = require('./webpack.base.config')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+const vuxLoader = require('vux-loader')
 
-const config = merge(base, {
+const webpackConfig = merge(base, {
   entry: {
     app: './src/entry-client.js'
   },
@@ -53,4 +54,6 @@ if (process.env.NODE_ENV === 'production') {
   )
 }
 
-module.exports = config
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui', 'progress-bar', 'duplicate-style']
+})

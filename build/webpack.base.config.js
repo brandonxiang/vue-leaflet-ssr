@@ -3,10 +3,11 @@ const webpack = require('webpack')
 const vueConfig = require('./vue-loader.config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const vuxLoader = require('vux-loader')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-module.exports = {
+const webpackConfig = {
   devtool: isProd
     ? false
     : '#cheap-module-source-map',
@@ -72,3 +73,5 @@ module.exports = {
         new FriendlyErrorsPlugin()
       ]
 }
+
+module.exports = webpackConfig
