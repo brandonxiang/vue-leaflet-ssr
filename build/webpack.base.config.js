@@ -16,8 +16,11 @@ module.exports = {
     filename: '[name].[chunkhash].js'
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
-      'public': path.resolve(__dirname, '../public')
+      '@': path.resolve(__dirname, '../src'),
+      'public': path.resolve(__dirname, '../public'),
+      'vue$': 'vue/dist/vue.esm.js',
     }
   },
   module: {
